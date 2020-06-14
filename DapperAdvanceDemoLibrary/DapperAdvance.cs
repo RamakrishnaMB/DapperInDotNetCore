@@ -1,12 +1,10 @@
 ﻿using Dapper;
-using HelperLibrary.Models;
-using ModelsLibrary;
+using ModelsLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 
 namespace DapperAdvanceDemoLibrary
 {
@@ -17,7 +15,7 @@ namespace DapperAdvanceDemoLibrary
             List<FullPersonModel> fullPersonModel = new List<FullPersonModel>();
             using (IDbConnection cnn = new SqlConnection(Tools.GetConnectionString()))
             {
-                string sql = @"select pe.*, ph.* 
+                string sql = @"select pe.*, ph.*
                                from dbo.Person pe
                                left join dbo.Phone ph
                                  on pe.CellPhoneId = ph.Id;";
@@ -128,7 +126,7 @@ namespace DapperAdvanceDemoLibrary
                 p.Add("@FirstName", firstName);
                 p.Add("@LastName", lastName);
 
-                string sql = $@"insert into dbo.Person (FirstName, LastName) 
+                string sql = $@"insert into dbo.Person (FirstName, LastName)
                                 values (@FirstName, @LastName);
                                 select @Id = @@IDENTITY";
 
@@ -148,7 +146,7 @@ namespace DapperAdvanceDemoLibrary
                 p.Add("@FirstName", firstName);
                 p.Add("@LastName", lastName);
 
-                string sql = $@"insert into dbo.Person (FirstName, LastName) 
+                string sql = $@"insert into dbo.Person (FirstName, LastName)
                                 values (@FirstName, @LastName)";
 
                 cnn.Open();

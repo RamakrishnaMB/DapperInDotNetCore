@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Text;
-
-namespace ModelsLibrary
+﻿namespace DapperAdvanceDemoLibrary
 {
     public static class Tools
     {
