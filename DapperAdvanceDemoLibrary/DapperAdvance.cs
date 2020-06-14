@@ -36,6 +36,7 @@ namespace DapperAdvanceDemoLibrary
         {
             using (IDbConnection cnn = new SqlConnection(Tools.GetConnectionString()))
             {
+                //Anonymous Type
                 var p = new
                 {
                     LastName = lastName
@@ -46,6 +47,7 @@ namespace DapperAdvanceDemoLibrary
                                  on pe.CellPhoneId = ph.Id
                                where pe.LastName = @LastName;";
 
+                // Lamda Expression to map the objects 
                 var people = cnn.Query<FullPersonModel, PhoneModel, FullPersonModel>(sql,
                     (person, phone) => { person.CellPhone = phone; return person; }, p);
 
