@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DapperAdvanceDemoLibrary;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,9 @@ namespace DapperInDotNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Getting Connection String from Database
+            var connection = Configuration.GetConnectionString("DatabaseConnection");
+            ShareConnectionString.Value = connection;
             services.AddControllersWithViews();
         }
 
